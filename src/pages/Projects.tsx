@@ -14,7 +14,7 @@ const projects = [
     description:
       'An innovative tool that generates inspiring, motivational, and thought-provoking quotes. Ideal for sharing on social media or adding to your collection. Powered by the Google Gemini API Flash 1.5.',
     github: 'https://github.com/xagar18/RandomQuoteGenerator-Gemini',
-    live: 'https://sagar-quote-generator.netlify.app/',
+    live: 'https://sagar-quote.netlify.app/',
   },
   {
     title: 'Todo App',
