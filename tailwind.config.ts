@@ -81,10 +81,15 @@ export default {
         'underline-grow': {
           '0%': { width: '0%' },
           '100%': { width: '100%' }
+        },
+        'scroll': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' }
         }
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.7s cubic-bezier(0.16,1,0.3,1) both',
+        'scroll': 'scroll 20s linear infinite',
       }
     }
   },
