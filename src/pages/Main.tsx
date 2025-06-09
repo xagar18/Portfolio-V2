@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, MapPin } from 'lucide-react';
 
 const Main = () => {
   return (

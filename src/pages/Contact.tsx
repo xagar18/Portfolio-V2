@@ -38,7 +38,7 @@ const Contact = () => {
           <div className="flex items-center justify-center gap-3 text-muted-foreground">
             <Mail className="w-4 h-4 text-primary" />
             <a
-              href="mailto:hello@alexdev.com"
+              href="mailto:sagaryadav6352@gmail.com"
               className="text-primary hover:underline text-sm sm:text-base transition-colors"
             >
               sagaryadav6352@gmail.com
