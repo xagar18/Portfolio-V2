@@ -1,19 +1,20 @@
+import { FaDocker, FaGit, FaJs, FaNodeJs, FaReact } from 'react-icons/fa';
+import { SiTypescript } from 'react-icons/si';
+
 const skills = [
-  { category: "Frontend", items: ["React / Next.js", "TypeScript", "Tailwind CSS", "JavaScript"] },
-  { category: "Backend", items: ["Node.js", "Express", "REST APIs", "Database Design"] },
-  { category: "Tools", items: ["Git", "VS Code", "Figma", "DevTools"] },
-  { category: "Concepts", items: ["Responsive Design", "Performance", "Clean Code", "UX"] }
+  { category: 'Frontend', items: ['React / Next.js', 'TypeScript', 'Tailwind CSS', 'JavaScript'] },
+  { category: 'Backend', items: ['Node.js', 'Express', 'REST APIs', 'Database Design'] },
+  { category: 'Tools', items: ['Git', 'VS Code', 'Figma', 'DevTools'] },
+  { category: 'Concepts', items: ['Responsive Design', 'Performance', 'Clean Code', 'UX'] },
 ];
 
 const techLogos = [
-  { name: "JavaScript", logo: "🟨" },
-  { name: "TypeScript", logo: "🔷" },
-  { name: "React", logo: "⚛️" },
-  { name: "Node.js", logo: "🟢" },
-  { name: "VS Code", logo: "🔵" },
-  { name: "Git", logo: "📦" },
-  { name: "CSS", logo: "🎨" },
-  { name: "HTML", logo: "🧡" },
+  { name: 'JavaScript', logo: <FaJs /> },
+  { name: 'TypeScript', logo: <SiTypescript /> },
+  { name: 'React', logo: <FaReact /> },
+  { name: 'Node.js', logo: <FaNodeJs /> },
+  { name: 'Docker', logo: <FaDocker /> },
+  { name: 'Git', logo: <FaGit /> },
 ];
 
 const Skills = () => (
@@ -32,8 +33,8 @@ const Skills = () => (
       {/* Skills Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         {skills.map((skillGroup, i) => (
-          <div 
-            key={skillGroup.category} 
+          <div
+            key={skillGroup.category}
             className="space-y-4 p-4 sm:p-6 rounded-xl border border-border/50 bg-card/30 hover:bg-card/50 hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-md"
             style={{ animationDelay: `${0.1 * i}s` }}
           >
@@ -52,9 +53,7 @@ const Skills = () => (
 
       {/* Animated Tech Logos */}
       <div className="w-full overflow-hidden py-8">
-        <h3 className="text-lg font-medium text-muted-foreground mb-8">
-          Technologies I Work With
-        </h3>
+        <h3 className="text-lg font-medium text-muted-foreground mb-8">Technologies I Work With</h3>
         <div className="relative">
           <div className="flex flex-wrap justify-center gap-6 sm:gap-12">
             {techLogos.map((tech) => (

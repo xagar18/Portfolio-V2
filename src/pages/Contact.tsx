@@ -50,23 +50,31 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Contact Form */}
-        <form className="space-y-4 animate-fade-in-up" style={{ animationDelay: '.1s' }}>
+        {/* Contact Form with Formspree */}
+        <form
+          action="https://formspree.io/f/xyzwqjvn" // Replace with your Formspree endpoint
+          method="POST"
+          className="space-y-4 animate-fade-in-up"
+          style={{ animationDelay: '.1s' }}
+        >
           <div className="space-y-4">
             <input
               required
               type="text"
+              name="name"
               placeholder="Your Name"
               className="w-full border border-border bg-background px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
             />
             <input
               required
               type="email"
+              name="email"
               placeholder="Your Email"
               className="w-full border border-border bg-background px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
             />
             <textarea
               required
+              name="message"
               placeholder="Tell me about your project..."
               rows={4}
               className="w-full border border-border bg-background px-4 py-3 rounded-xl text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"

@@ -65,7 +65,7 @@ const Main = () => {
             {/* <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group">
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               <a
-                href="mailto:hello@alexdev.com"
+                href="mailto:sagaryadav6352@gmail.com"
                 className="text-lg hover:underline underline-offset-4"
               >
                 sagaryadav6352@gmail.com
