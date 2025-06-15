@@ -20,7 +20,7 @@ const Main = () => {
   const [typingText, setTypingText] = useState('');
   const [currentLine, setCurrentLine] = useState(0);
 
-  const terminalLines = ['Welcome to sagar.dev terminal'];
+  const terminalLines = ['Welcome to sagarweb.site terminal'];
 
   const handleLoadingComplete = () => {
     console.log('Loading complete - showing main content');

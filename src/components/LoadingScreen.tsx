@@ -55,7 +55,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             <div className="w-6 h-6 border border-primary rounded flex items-center justify-center">
               <div className="w-2 h-2 bg-primary rounded animate-pulse"></div>
             </div>
-            <h1 className="text-xl font-medium text-primary">SAGAR.DEV</h1>
+            <h1 className="text-xl font-medium text-primary">SAGARWEB.SITE</h1>
           </div>
         </div>
 
