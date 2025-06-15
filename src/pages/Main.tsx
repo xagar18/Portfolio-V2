@@ -1,112 +1,202 @@
-import { Github, Linkedin, MapPin } from 'lucide-react';
+
+import { Github, Linkedin, MapPin, Mail, Terminal, User, FileText } from "lucide-react";
+import { useState, useEffect } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+
+const SOCIALS = [
+  {
+    href: "https://github.com/",
+    label: "GitHub",
+    icon: <Github className="w-4 h-4" />,
+  },
+  {
+    href: "https://linkedin.com/",
+    label: "LinkedIn",
+    icon: <Linkedin className="w-4 h-4" />,
+  },
+];
 
 const Main = () => {
+  const [showLoading, setShowLoading] = useState(false);
+  const [typingText, setTypingText] = useState('');
+  const [currentLine, setCurrentLine] = useState(0);
+
+  const terminalLines = [
+    "Welcome to sagar.dev terminal"
+  ];
+
+  const handleLoadingComplete = () => {
+    console.log('Loading complete - showing main content');
+    setShowLoading(false);
+    sessionStorage.setItem('hasSeenLoading', 'true');
+  };
+
+  useEffect(() => {
+    const hasSeenLoading = sessionStorage.getItem('hasSeenLoading');
+    if (!hasSeenLoading) {
+      setShowLoading(true);
+      setCurrentLine(0);
+      setTypingText('');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showLoading && currentLine < terminalLines.length) {
+      const line = terminalLines[currentLine];
+      let charIndex = 0;
+      
+      const typingInterval = setInterval(() => {
+        if (charIndex < line.length) {
+          setTypingText(line.slice(0, charIndex + 1));
+          charIndex++;
+        } else {
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            setCurrentLine(prev => prev + 1);
+            setTypingText('');
+          }, 1000);
+        }
+      }, 50);
+
+      return () => clearInterval(typingInterval);
+    }
+  }, [showLoading, currentLine]);
+
+  if (showLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
+
   return (
-    <section className="w-full min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-primary/5 rounded-full blur-2xl"></div>
-        <div className="absolute top-3/4 left-1/4 w-32 h-32 bg-primary/8 rounded-full blur-xl"></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto text-center space-y-12 sm:space-y-16">
-        {/* Status Badge */}
-        <div className="inline-flex items-center gap-3 px-4 py-3 bg-green-50/80 dark:bg-green-950/30 border border-green-200/50 dark:border-green-800/30 rounded-full shadow-sm backdrop-blur-sm animate-fade-in-up">
-          <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-sm text-green-700 dark:text-green-400 font-medium">
-            Available for work
-          </span>
-        </div>
-
-        {/* Hero Content */}
-        <div
-          className="space-y-8 sm:space-y-12 animate-fade-in-up"
-          style={{ animationDelay: '0.1s' }}
-        >
-          {/* Main Title */}
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.9]">
-                <span className="block text-muted-foreground/60 text-xl sm:text-2xl md:text-3xl font-light mb-4">
-                  Hi, I'm
-                </span>
-                <span className="block bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-                  Sagar
-                </span>
-              </h1>
+    <div className="min-h-screen bg-background text-foreground font-mono flex items-center justify-center p-3 sm:p-6">
+      <div className="w-full max-w-3xl mx-auto">
+        {/* Terminal Window */}
+        <div className="border border-border rounded-lg bg-card shadow-lg overflow-hidden">
+          {/* Terminal Header */}
+          <div className="flex items-center bg-muted px-4 py-3 border-b border-border">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
-
-            <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground/90 font-light tracking-wide">
-                Full Stack Developer
-              </h2>
-              <div className="flex justify-center">
-                <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 rounded-full"></div>
+            <div className="flex items-center gap-2 ml-4">
+              <Terminal className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium">sagar@portfolio</span>
+            </div>
+          </div>
+          
+          {/* Terminal Content */}
+          <div className="p-4 sm:p-6 space-y-5">
+            {/* Welcome message */}
+            {currentLine >= 1 && (
+              <div className="flex items-center gap-3">
+                <span className="text-primary">➜</span>
+                <span className="text-sm">Welcome to sagarweb.site terminal</span>
               </div>
-            </div>
-          </div>
+            )}
+            
+            {/* Current typing line */}
+            {currentLine < terminalLines.length && (
+              <div className="flex items-center gap-3">
+                <span className="text-primary">➜</span>
+                <span className="text-sm">
+                  {typingText}
+                  <span className="animate-pulse ml-1">▋</span>
+                </span>
+              </div>
+            )}
 
-          {/* Description */}
-          <div className="max-w-3xl mx-auto space-y-6">
-            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground/90 font-light leading-relaxed">
-              I create digital experiences with clean code and thoughtful design
-            </p>
-            <p className="text-base sm:text-lg text-muted-foreground/70 leading-relaxed max-w-2xl mx-auto">
-              Passionate about building scalable solutions that make a difference in the digital
-              world
-            </p>
-          </div>
-        </div>
+            {/* Content sections */}
+            {currentLine >= terminalLines.length && (
+              <div className="space-y-6">
+                {/* User info */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">➜</span>
+                    <User className="w-4 h-4" />
+                    <span className="text-sm">whoami</span>
+                  </div>
+                  <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
+                    <div className="text-lg font-bold text-primary mb-1">SAGAR</div>
+                    <div className="text-sm text-muted-foreground mb-2">Full Stack Developer</div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <MapPin className="w-3 h-3" />
+                      <span>Mumbai, India</span>
+                    </div>
+                  </div>
+                </div>
 
-        {/* Contact & Location Info */}
-        <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-            {/* <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group">
-              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
-              <a
-                href="mailto:sagaryadav6352@gmail.com"
-                className="text-lg hover:underline underline-offset-4"
-              >
-                sagaryadav6352@gmail.com
-              </a>
-            </div> */}
-            {/* <div className="hidden sm:block w-1 h-1 bg-muted-foreground/30 rounded-full"></div> */}
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <MapPin className="w-5 h-5" />
-              <span className="text-lg">Based in Mumbai, India</span>
-            </div>
-          </div>
+                {/* About */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">➜</span>
+                    <FileText className="w-4 h-4" />
+                    <span className="text-sm">cat README.md</span>
+                  </div>
+                  <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
+                    <p className="text-sm leading-relaxed">
+                      Passionate developer crafting seamless digital experiences with clean code and elegant design.
+                    </p>
+                  </div>
+                </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-6">
-            <a
-              href="https://github.com/xagar18"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a
-              href="https://linkedin.com/in/xagar18"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-          </div>
-        </div>
+                {/* Status */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">➜</span>
+                    <span className="text-sm">status --check</span>
+                  </div>
+                  <div className="ml-6 flex items-center gap-3 p-4 bg-muted/50 rounded-md border border-border/50">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-sm font-medium text-green-600 dark:text-green-400">AVAILABLE FOR WORK</span>
+                  </div>
+                </div>
 
-        {/* Navigation Hint */}
-        <div className="animate-fade-in-up pt-8" style={{ animationDelay: '0.3s' }}>
-          <p className="text-sm text-muted-foreground/60">Explore my work using the sidebar →</p>
+                {/* Contact */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">➜</span>
+                    <Mail className="w-4 h-4" />
+                    <span className="text-sm">contact --list</span>
+                  </div>
+                  <div className="ml-6 space-y-2 p-4 bg-muted/50 rounded-md border border-border/50">
+                    <a
+                      href="mailto:sagar@example.com"
+                      className="flex items-center gap-3 text-sm text-primary hover:underline transition-colors"
+                    >
+                      <span>▸</span>
+                      <Mail className="w-3 h-3" />
+                      <span>sagar@example.com</span>
+                    </a>
+                    {SOCIALS.map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        className="flex items-center gap-3 text-sm text-primary hover:underline transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>▸</span>
+                        {social.icon}
+                        <span>{social.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Command prompt */}
+                <div className="pt-4 border-t border-border/30">
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary">➜</span>
+                    <span className="text-muted-foreground text-sm">~</span>
+                    <span className="animate-pulse text-primary">▋</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

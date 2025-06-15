@@ -1,78 +1,117 @@
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+
+import { useState } from "react";
+import { Menu, X, Terminal } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { title: 'Home', href: '/' },
-  { title: 'Skills', href: '/skills' },
-  { title: 'Projects', href: '/projects' },
-  { title: 'Contact', href: '/contact' },
+  { title: "Home", href: "/" },
+  { title: "Skills", href: "/skills" },
+  { title: "Projects", href: "/projects" },
+  { title: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a
-              href="/"
-              className="text-xl font-bold font-grotesk text-primary hover:text-primary/80 transition-colors"
-            >
-              Portfolio
-            </a>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
-                >
-                  {item.title}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-                </a>
-              ))}
+    <nav className="fixed top-4 left-4 right-4 z-40 font-mono">
+      {/* Linux Terminal-style navbar */}
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-card border border-border rounded-lg shadow-lg overflow-hidden">
+          {/* Terminal Header */}
+          <div className="flex items-center justify-between bg-muted px-4 py-2 border-b border-border">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-1">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium">user@portfolio:~$</span>
+              </div>
+            </div>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(!isOpen)}
+                className="h-8 w-8 p-0 text-muted-foreground hover:text-primary"
+              >
+                {isOpen ? <X size={16} /> : <Menu size={16} />}
+              </Button>
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-muted-foreground hover:text-primary"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+          {/* Terminal Content */}
+          <div className="p-4 space-y-3 bg-background/95 backdrop-blur-sm">
+            {/* Command line with brand */}
+            <div className="flex items-center gap-2">
+              <span className="text-green-500 font-bold">➜</span>
+              <span className="text-blue-400 font-medium">~</span>
+              <a 
+                href="/" 
+                className="text-primary font-bold hover:text-primary/80 transition-colors"
+              >
+                ./portfolio
+              </a>
+            </div>
+
+            {/* Desktop Navigation - Command style */}
+            <div className="hidden md:block">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-green-500 font-bold">➜</span>
+                <span className="text-blue-400 font-medium">navigation</span>
+                <span className="text-muted-foreground">ls -la</span>
+              </div>
+              <div className="ml-6 flex flex-wrap gap-3">
+                {navItems.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    className="px-3 py-1 text-sm bg-muted border border-border rounded hover:border-primary/50 hover:bg-primary/10 transition-all duration-200 text-muted-foreground hover:text-primary font-mono"
+                  >
+                    ./{item.title.toLowerCase()}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            {isOpen && (
+              <div className="md:hidden">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-green-500 font-bold">➜</span>
+                  <span className="text-blue-400 font-medium">menu</span>
+                  <span className="text-muted-foreground">cat navigation.txt</span>
+                </div>
+                <div className="ml-6 space-y-2">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className="flex items-center gap-2 px-3 py-2 text-sm bg-muted border border-border rounded hover:border-primary/50 hover:bg-primary/10 transition-all duration-200 text-muted-foreground hover:text-primary font-mono"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className="text-green-500 font-bold">{'>'}</span>
+                      ./{item.title.toLowerCase()}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Command prompt cursor */}
+            <div className="flex items-center gap-2 pt-2">
+              <span className="text-green-500 font-bold">➜</span>
+              <span className="text-blue-400 font-medium">~</span>
+              <span className="animate-pulse text-primary font-bold">▋</span>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <a
-                key={item.title}
-                href={item.href}
-                className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
