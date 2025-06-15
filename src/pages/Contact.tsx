@@ -1,35 +1,25 @@
-
-import {
-  Linkedin,
-  Twitter,
-  Instagram,
-  Github,
-  Mail,
-  MapPin,
-  Terminal,
-  Send
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
+import { Github, Instagram, Linkedin, Mail, MapPin, Send, Terminal, Twitter } from 'lucide-react';
 
 const socials = [
   {
-    name: "LinkedIn",
-    url: "https://linkedin.com/",
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/',
     Icon: Linkedin,
   },
   {
-    name: "GitHub",
-    url: "https://github.com/",
+    name: 'GitHub',
+    url: 'https://github.com/',
     Icon: Github,
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com/",
+    name: 'Twitter',
+    url: 'https://twitter.com/',
     Icon: Twitter,
   },
   {
-    name: "Instagram",
-    url: "https://instagram.com/",
+    name: 'Instagram',
+    url: 'https://instagram.com/',
     Icon: Instagram,
   },
 ];
@@ -49,10 +39,10 @@ const Contact = () => {
             </div>
             <div className="flex items-center gap-2 ml-3">
               <Terminal className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium">sagar@contact</span>
+              <span className="text-xs font-medium">sagaryadav6352@gmail.com</span>
             </div>
           </div>
-          
+
           {/* Terminal Content */}
           <div className="p-4 space-y-3">
             {/* Header */}
@@ -64,7 +54,9 @@ const Contact = () => {
               </div>
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50">
                 <div className="text-base font-bold text-primary mb-1">LET'S CONNECT</div>
-                <div className="text-xs text-muted-foreground">Ready to collaborate on your next project</div>
+                <div className="text-xs text-muted-foreground">
+                  Ready to collaborate on your next project
+                </div>
               </div>
             </div>
 
@@ -77,8 +69,11 @@ const Contact = () => {
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50 space-y-2">
                 <div className="flex items-center gap-2 text-xs">
                   <Mail className="w-3 h-3 text-primary" />
-                  <a href="mailto:hello@alexdev.com" className="text-primary hover:underline transition-colors">
-                    hello@alexdev.com
+                  <a
+                    href="mailto:sagaryadav6352@gmail.com"
+                    className="text-primary hover:underline transition-colors"
+                  >
+                    sagaryadav6352@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
