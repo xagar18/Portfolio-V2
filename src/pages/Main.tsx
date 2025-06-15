@@ -1,17 +1,16 @@
-
-import { Github, Linkedin, MapPin, Mail, Terminal, User, FileText } from "lucide-react";
-import { useState, useEffect } from "react";
-import LoadingScreen from "@/components/LoadingScreen";
+import LoadingScreen from '@/components/LoadingScreen';
+import { FileText, Github, Linkedin, Mail, MapPin, Terminal, User } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const SOCIALS = [
   {
-    href: "https://github.com/",
-    label: "GitHub",
+    href: 'https://github.com/',
+    label: 'GitHub',
     icon: <Github className="w-4 h-4" />,
   },
   {
-    href: "https://linkedin.com/",
-    label: "LinkedIn",
+    href: 'https://linkedin.com/',
+    label: 'LinkedIn',
     icon: <Linkedin className="w-4 h-4" />,
   },
 ];
@@ -21,9 +20,7 @@ const Main = () => {
   const [typingText, setTypingText] = useState('');
   const [currentLine, setCurrentLine] = useState(0);
 
-  const terminalLines = [
-    "Welcome to sagar.dev terminal"
-  ];
+  const terminalLines = ['Welcome to sagar.dev terminal'];
 
   const handleLoadingComplete = () => {
     console.log('Loading complete - showing main content');
@@ -44,7 +41,7 @@ const Main = () => {
     if (!showLoading && currentLine < terminalLines.length) {
       const line = terminalLines[currentLine];
       let charIndex = 0;
-      
+
       const typingInterval = setInterval(() => {
         if (charIndex < line.length) {
           setTypingText(line.slice(0, charIndex + 1));
@@ -52,7 +49,7 @@ const Main = () => {
         } else {
           clearInterval(typingInterval);
           setTimeout(() => {
-            setCurrentLine(prev => prev + 1);
+            setCurrentLine((prev) => prev + 1);
             setTypingText('');
           }, 1000);
         }
@@ -83,7 +80,7 @@ const Main = () => {
               <span className="text-sm font-medium">sagar@portfolio</span>
             </div>
           </div>
-          
+
           {/* Terminal Content */}
           <div className="p-4 sm:p-6 space-y-5">
             {/* Welcome message */}
@@ -93,7 +90,7 @@ const Main = () => {
                 <span className="text-sm">Welcome to sagarweb.site terminal</span>
               </div>
             )}
-            
+
             {/* Current typing line */}
             {currentLine < terminalLines.length && (
               <div className="flex items-center gap-3">
@@ -134,7 +131,8 @@ const Main = () => {
                   </div>
                   <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
                     <p className="text-sm leading-relaxed">
-                      Passionate developer crafting seamless digital experiences with clean code and elegant design.
+                      Passionate developer crafting seamless digital experiences with clean code and
+                      elegant design.
                     </p>
                   </div>
                 </div>
@@ -147,7 +145,9 @@ const Main = () => {
                   </div>
                   <div className="ml-6 flex items-center gap-3 p-4 bg-muted/50 rounded-md border border-border/50">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-green-600 dark:text-green-400">AVAILABLE FOR WORK</span>
+                    <span className="text-sm font-medium text-green-600 dark:text-green-400">
+                      AVAILABLE FOR WORK
+                    </span>
                   </div>
                 </div>
 
@@ -160,12 +160,12 @@ const Main = () => {
                   </div>
                   <div className="ml-6 space-y-2 p-4 bg-muted/50 rounded-md border border-border/50">
                     <a
-                      href="mailto:sagar@example.com"
+                      href="mailto:sagaryadav6352@gmail.com"
                       className="flex items-center gap-3 text-sm text-primary hover:underline transition-colors"
                     >
                       <span>▸</span>
                       <Mail className="w-3 h-3" />
-                      <span>sagar@example.com</span>
+                      <span>sagaryadav6352@gmail.com</span>
                     </a>
                     {SOCIALS.map((social) => (
                       <a
