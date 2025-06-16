@@ -24,8 +24,8 @@ const projects = [
     title: 'Weather Dashboard',
     description: 'Clean weather application with location forecasts and interactive charts.',
     tech: ['React', 'Chart.js', 'Weather API', 'Tailwind'],
-    github: 'https://github.com/xagar18/Weather-App',
-    live: 'https://github.com/xagar18/Weather-App-V2',
+    github: 'https://github.com/xagar18/Weather-App-V2',
+    live: 'https://sagar-weatherapp.netlify.app',
     year: '2024',
   },
 ];

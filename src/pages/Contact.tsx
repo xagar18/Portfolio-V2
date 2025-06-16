@@ -92,10 +92,15 @@ const Contact = () => {
               </div>
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50">
                 <h3 className="text-sm font-medium text-foreground mb-3">Send Message</h3>
-                <form className="space-y-3">
+                <form
+                  action= {import.meta.env.VITE_BASIN_ENDPOINT}
+                  method="POST"
+                  className="space-y-3"
+                >
                   <div className="grid grid-cols-2 gap-3">
                     <input
                       required
+                      name = "name"
                       type="text"
                       placeholder="Your Name"
                       className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
@@ -103,12 +108,14 @@ const Contact = () => {
                     <input
                       required
                       type="email"
+                      name="email" 
                       placeholder="Your Email"
                       className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
                     />
                   </div>
                   <textarea
                     required
+                    name = "textarea"
                     placeholder="Tell me about your project..."
                     rows={3}
                     className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"
