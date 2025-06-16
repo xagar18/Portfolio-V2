@@ -4,22 +4,22 @@ import { Github, Instagram, Linkedin, Mail, MapPin, Send, Terminal, Twitter } fr
 const socials = [
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/',
+    url: 'https://www.linkedin.com/in/xagar/',
     Icon: Linkedin,
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/',
+    url: 'https://github.com/xagar18',
     Icon: Github,
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/',
+    url: 'https://twitter.com/xagarr18',
     Icon: Twitter,
   },
   {
     name: 'Instagram',
-    url: 'https://instagram.com/',
+    url: 'https://instagram.com/xagarrrr',
     Icon: Instagram,
   },
 ];

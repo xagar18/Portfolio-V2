@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 
 const SOCIALS = [
   {
-    href: 'https://github.com/',
+    href: 'https://github.com/xagar18',
     label: 'GitHub',
     icon: <Github className="w-4 h-4" />,
   },
   {
-    href: 'https://linkedin.com/',
+    href: 'https://linkedin.com/in/xagar',
     label: 'LinkedIn',
     icon: <Linkedin className="w-4 h-4" />,
   },
