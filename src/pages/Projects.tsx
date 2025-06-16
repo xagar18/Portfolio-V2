@@ -25,7 +25,7 @@ const projects = [
     description: 'Clean weather application with location forecasts and interactive charts.',
     tech: ['React', 'Chart.js', 'Weather API', 'Tailwind'],
     github: 'https://github.com/xagar18/Weather-App',
-    live: '#',
+    live: 'https://github.com/xagar18/Weather-App-V2',
     year: '2024',
   },
 ];
