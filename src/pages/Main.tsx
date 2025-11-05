@@ -1,39 +1,47 @@
-import LoadingScreen from '@/components/LoadingScreen';
-import { FileText, Github, Linkedin, Mail, MapPin, Terminal, User } from 'lucide-react';
-import { useEffect, useState } from 'react';
+// import LoadingScreen from '@/components/LoadingScreen';
+import {
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Terminal,
+  User,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 const SOCIALS = [
   {
-    href: 'https://github.com/xagar18',
-    label: 'GitHub',
+    href: "https://github.com/xagar18",
+    label: "GitHub",
     icon: <Github className="w-4 h-4" />,
   },
   {
-    href: 'https://linkedin.com/in/xagar',
-    label: 'LinkedIn',
+    href: "https://linkedin.com/in/xagar",
+    label: "LinkedIn",
     icon: <Linkedin className="w-4 h-4" />,
   },
 ];
 
 const Main = () => {
   const [showLoading, setShowLoading] = useState(false);
-  const [typingText, setTypingText] = useState('');
+  const [typingText, setTypingText] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
 
-  const terminalLines = ['Welcome to sagarweb.site terminal'];
+  const terminalLines = ["Welcome to sagarweb.site terminal"];
 
   const handleLoadingComplete = () => {
-    console.log('Loading complete - showing main content');
+    console.log("Loading complete - showing main content");
     setShowLoading(false);
-    sessionStorage.setItem('hasSeenLoading', 'true');
+    sessionStorage.setItem("hasSeenLoading", "true");
   };
 
   useEffect(() => {
-    const hasSeenLoading = sessionStorage.getItem('hasSeenLoading');
+    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
     if (!hasSeenLoading) {
       setShowLoading(true);
       setCurrentLine(0);
-      setTypingText('');
+      setTypingText("");
     }
   }, []);
 
@@ -50,7 +58,7 @@ const Main = () => {
           clearInterval(typingInterval);
           setTimeout(() => {
             setCurrentLine((prev) => prev + 1);
-            setTypingText('');
+            setTypingText("");
           }, 1000);
         }
       }, 50);
@@ -59,9 +67,9 @@ const Main = () => {
     }
   }, [showLoading, currentLine]);
 
-  if (showLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
+  // if (showLoading) {
+  //   return <LoadingScreen onComplete={handleLoadingComplete} />;
+  // }
 
   return (
     <div className="min-h-screen bg-background text-foreground font-mono flex items-center justify-center p-3 sm:p-6">
@@ -87,7 +95,9 @@ const Main = () => {
             {currentLine >= 1 && (
               <div className="flex items-center gap-3">
                 <span className="text-primary">➜</span>
-                <span className="text-sm">Welcome to sagarweb.site terminal</span>
+                <span className="text-sm">
+                  Welcome to sagarweb.site terminal
+                </span>
               </div>
             )}
 
@@ -113,8 +123,12 @@ const Main = () => {
                     <span className="text-sm">whoami</span>
                   </div>
                   <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
-                    <div className="text-lg font-bold text-primary mb-1">SAGAR</div>
-                    <div className="text-sm text-muted-foreground mb-2">Full Stack Developer</div>
+                    <div className="text-lg font-bold text-primary mb-1">
+                      SAGAR
+                    </div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Full Stack Developer
+                    </div>
                     <div className="flex items-center gap-2 text-sm">
                       <MapPin className="w-3 h-3" />
                       <span>Mumbai, India</span>
@@ -131,8 +145,8 @@ const Main = () => {
                   </div>
                   <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
                     <p className="text-sm leading-relaxed">
-                      Passionate developer crafting seamless digital experiences with clean code and
-                      elegant design.
+                      Passionate developer crafting seamless digital experiences
+                      with clean code and elegant design.
                     </p>
                   </div>
                 </div>
