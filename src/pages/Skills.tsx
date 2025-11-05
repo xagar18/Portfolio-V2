@@ -3,26 +3,26 @@ import { Code2, Database, Globe, Wrench, Star, Zap } from "lucide-react";
 
 const frontendSkills = [
   { name: "React", level: 95, icon: "⚛️" },
-  { name: "Next.js", level: 90, icon: "▲" },
+  // { name: "Next.js", level: 90, icon: "▲" },
   { name: "TypeScript", level: 88, icon: "📘" },
-  { name: "Tailwind CSS", level: 92, icon: "🎨" },
-  { name: "JavaScript", level: 94, icon: "💛" },
+  { name: "Tailwind CSS", level: 99, icon: "🎨" },
+  { name: "JavaScript", level: 96, icon: "💛" },
 ];
 
 const backendSkills = [
-  { name: "Node.js", level: 85, icon: "🟢" },
-  { name: "Express.js", level: 80, icon: "🚀" },
-  { name: "MongoDB", level: 82, icon: "🍃" },
-  { name: "PostgreSQL", level: 78, icon: "🐘" },
-  { name: "REST APIs", level: 90, icon: "🔗" },
+  { name: "Node.js", level: 98, icon: "🟢" },
+  { name: "Express.js", level: 97, icon: "🚀" },
+  { name: "MongoDB", level: 95, icon: "🍃" },
+  { name: "PostgreSQL", level: 88, icon: "🐘" },
+  { name: "REST APIs", level: 98, icon: "🔗" },
 ];
 
 const toolsSkills = [
   { name: "Git", level: 88, icon: "📚" },
-  { name: "Docker", level: 75, icon: "🐳" },
+  // { name: "Docker", level: 75, icon: "🐳" },
   { name: "AWS", level: 70, icon: "☁️" },
   { name: "Vercel", level: 85, icon: "🔺" },
-  { name: "Figma", level: 80, icon: "🎨" },
+  // { name: "Figma", level: 80, icon: "🎨" },
 ];
 
 const SkillCard = ({ skill }: { skill: { name: string; level: number; icon: string } }) => (
@@ -37,7 +37,7 @@ const SkillCard = ({ skill }: { skill: { name: string; level: number; icon: stri
         <span className="text-foreground font-medium">{skill.level}%</span>
       </div>
       <div className="w-full bg-muted rounded-full h-1">
-        <div 
+        <div
           className="bg-primary h-1 rounded-full transition-all duration-500"
           style={{ width: `${skill.level}%` }}
         />
@@ -64,7 +64,7 @@ const Skills = () => {
               <span className="text-xs font-medium">sagar@skills</span>
             </div>
           </div>
-          
+
           {/* Terminal Content */}
           <div className="p-3 sm:p-4 space-y-4">
             {/* Header */}

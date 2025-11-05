@@ -1,25 +1,34 @@
-import { Button } from '@/components/ui/button';
-import { Github, Instagram, Linkedin, Mail, MapPin, Send, Terminal, Twitter } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Send,
+  Terminal,
+  Twitter,
+} from "lucide-react";
 
 const socials = [
   {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/xagar/',
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/xagar/",
     Icon: Linkedin,
   },
   {
-    name: 'GitHub',
-    url: 'https://github.com/xagar18',
+    name: "GitHub",
+    url: "https://github.com/xagar18",
     Icon: Github,
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/xagarr18',
+    name: "Twitter",
+    url: "https://twitter.com/xagarr18",
     Icon: Twitter,
   },
   {
-    name: 'Instagram',
-    url: 'https://instagram.com/xagarrrr',
+    name: "Instagram",
+    url: "https://instagram.com/xagarrrr",
     Icon: Instagram,
   },
 ];
@@ -39,7 +48,9 @@ const Contact = () => {
             </div>
             <div className="flex items-center gap-2 ml-3">
               <Terminal className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium">sagaryadav6352@gmail.com</span>
+              <span className="text-xs font-medium">
+                sagaryadav6352@gmail.com
+              </span>
             </div>
           </div>
 
@@ -53,7 +64,9 @@ const Contact = () => {
                 <span className="text-xs">cat contact_info.txt</span>
               </div>
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50">
-                <div className="text-base font-bold text-primary mb-1">LET'S CONNECT</div>
+                <div className="text-base font-bold text-primary mb-1">
+                  LET'S CONNECT
+                </div>
                 <div className="text-xs text-muted-foreground">
                   Ready to collaborate on your next project
                 </div>
@@ -91,16 +104,18 @@ const Contact = () => {
                 <span className="text-xs">vim message.json</span>
               </div>
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50">
-                <h3 className="text-sm font-medium text-foreground mb-3">Send Message</h3>
+                <h3 className="text-sm font-medium text-foreground mb-3">
+                  Send Message
+                </h3>
                 <form
-                  action= {import.meta.env.VITE_BASIN_ENDPOINT}
+                  action={import.meta.env.VITE_BASIN_ENDPOINT}
                   method="POST"
                   className="space-y-3"
                 >
                   <div className="grid grid-cols-2 gap-3">
                     <input
                       required
-                      name = "name"
+                      name="name"
                       type="text"
                       placeholder="Your Name"
                       className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
@@ -108,19 +123,23 @@ const Contact = () => {
                     <input
                       required
                       type="email"
-                      name="email" 
+                      name="email"
                       placeholder="Your Email"
                       className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200"
                     />
                   </div>
                   <textarea
                     required
-                    name = "textarea"
+                    name="textarea"
                     placeholder="Tell me about your project..."
                     rows={3}
                     className="w-full border border-border bg-background px-3 py-2 rounded-lg text-xs outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 resize-none"
                   />
-                  <Button type="submit" size="sm" className="w-full rounded-lg text-xs h-8">
+                  <Button
+                    type="submit"
+                    size="sm"
+                    className="w-full rounded-lg text-xs h-8"
+                  >
                     <Send className="w-3 h-3 mr-1" />
                     Send Message
                   </Button>
@@ -135,7 +154,9 @@ const Contact = () => {
                 <span className="text-xs">find . -name "*.social"</span>
               </div>
               <div className="ml-4 p-3 bg-muted/50 rounded-lg border border-border/50">
-                <h3 className="text-sm font-medium text-foreground mb-2">Connect With Me</h3>
+                <h3 className="text-sm font-medium text-foreground mb-2">
+                  Connect With Me
+                </h3>
                 <div className="flex gap-2">
                   {socials.map(({ name, url, Icon }) => (
                     <a
