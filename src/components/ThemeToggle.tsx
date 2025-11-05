@@ -1,6 +1,5 @@
-
-import { useEffect, useState } from "react";
 import { Moon, Sun, Terminal } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
@@ -9,7 +8,9 @@ export default function ThemeToggle() {
     if (savedTheme) {
       return savedTheme;
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   });
 
   useEffect(() => {
@@ -19,13 +20,13 @@ export default function ThemeToggle() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-    
+
     // Save theme to localStorage
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark");
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
 
   return (
@@ -44,14 +45,14 @@ export default function ThemeToggle() {
             <span className="text-xs font-medium">theme</span>
           </div>
         </div>
-        
+
         {/* Compact Terminal Content */}
         <div className="p-1.5 space-y-0.5">
           <div className="flex items-center gap-1">
             <span className="text-primary text-xs">$</span>
             <span className="text-xs font-medium text-primary">{theme}</span>
           </div>
-          
+
           <button
             onClick={toggleTheme}
             className="flex items-center gap-1 w-full p-1 rounded text-xs bg-muted/50 border border-border/50 hover:border-primary/30 hover:bg-muted transition-all duration-200 group"

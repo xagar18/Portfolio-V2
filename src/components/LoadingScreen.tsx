@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -7,44 +6,44 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [typingText, setTypingText] = useState('');
+  const [typingText, setTypingText] = useState("");
   const [progress, setProgress] = useState(0);
 
   const steps = [
-    { text: 'Initializing...', icon: '⚡' },
-    { text: 'Loading portfolio...', icon: '📂' },
-    { text: 'Ready!', icon: '✨' },
+    { text: "Initializing...", icon: "⚡" },
+    { text: "Loading portfolio...", icon: "📂" },
+    { text: "Ready!", icon: "✨" },
   ];
 
   useEffect(() => {
     setProgress(((currentStep + 1) / steps.length) * 100);
   }, [currentStep]);
 
-  useEffect(() => {
-    if (currentStep < steps.length) {
-      const step = steps[currentStep];
-      let charIndex = 0;
-      
-      const typingInterval = setInterval(() => {
-        if (charIndex < step.text.length) {
-          setTypingText(step.text.slice(0, charIndex + 1));
-          charIndex++;
-        } else {
-          clearInterval(typingInterval);
-          setTimeout(() => {
-            if (currentStep === steps.length - 1) {
-              setTimeout(() => onComplete(), 400);
-            } else {
-              setCurrentStep(prev => prev + 1);
-              setTypingText('');
-            }
-          }, 300);
-        }
-      }, 30);
+  // useEffect(() => {
+  //   if (currentStep < steps.length) {
+  //     const step = steps[currentStep];
+  //     let charIndex = 0;
 
-      return () => clearInterval(typingInterval);
-    }
-  }, [currentStep, onComplete]);
+  //     const typingInterval = setInterval(() => {
+  //       if (charIndex < step.text.length) {
+  //         setTypingText(step.text.slice(0, charIndex + 1));
+  //         charIndex++;
+  //       } else {
+  //         clearInterval(typingInterval);
+  //         setTimeout(() => {
+  //           if (currentStep === steps.length - 1) {
+  //             setTimeout(() => onComplete(), 400);
+  //           } else {
+  //             setCurrentStep(prev => prev + 1);
+  //             setTypingText('');
+  //           }
+  //         }, 300);
+  //       }
+  //     }, 30);
+
+  //     return () => clearInterval(typingInterval);
+  //   }
+  // }, [currentStep, onComplete]);
 
   return (
     <div className="fixed inset-0 bg-background z-50 flex items-center justify-center font-mono">
@@ -72,7 +71,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
               <span className="text-muted-foreground text-xs">loading</span>
             </div>
           </div>
-          
+
           {/* Terminal content */}
           <div className="p-4 min-h-[80px]">
             {/* Completed steps */}
@@ -82,7 +81,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                 <span className="text-muted-foreground">{step.text}</span>
               </div>
             ))}
-            
+
             {/* Current step */}
             {currentStep < steps.length && (
               <div className="flex items-center gap-2 text-sm">
@@ -95,11 +94,11 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             )}
           </div>
         </div>
-        
+
         {/* Minimal progress bar */}
         <div className="space-y-2">
           <div className="w-full bg-muted rounded-full h-1">
-            <div 
+            <div
               className="h-full bg-primary rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
