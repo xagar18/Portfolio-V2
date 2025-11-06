@@ -1,4 +1,3 @@
-// import LoadingScreen from '@/components/LoadingScreen';
 import {
   FileText,
   Github,
@@ -24,29 +23,13 @@ const SOCIALS = [
 ];
 
 const Main = () => {
-  const [showLoading, setShowLoading] = useState(false);
   const [typingText, setTypingText] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
 
   const terminalLines = ["Welcome to sagarweb.site terminal"];
 
-  const handleLoadingComplete = () => {
-    console.log("Loading complete - showing main content");
-    setShowLoading(false);
-    sessionStorage.setItem("hasSeenLoading", "true");
-  };
-
   useEffect(() => {
-    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
-    if (!hasSeenLoading) {
-      setShowLoading(true);
-      setCurrentLine(0);
-      setTypingText("");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!showLoading && currentLine < terminalLines.length) {
+    if (currentLine < terminalLines.length) {
       const line = terminalLines[currentLine];
       let charIndex = 0;
 
@@ -61,15 +44,11 @@ const Main = () => {
             setTypingText("");
           }, 1000);
         }
-      }, 50);
+      }, 5);
 
       return () => clearInterval(typingInterval);
     }
-  }, [showLoading, currentLine]);
-
-  // if (showLoading) {
-  //   return <LoadingScreen onComplete={handleLoadingComplete} />;
-  // }
+  }, [currentLine]);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-mono flex items-center justify-center p-3 sm:p-6">
