@@ -1,7 +1,5 @@
-
+import { Menu, Terminal, X } from "lucide-react";
 import { useState } from "react";
-import { Menu, X, Terminal } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const navItems = [
   { title: "Home", href: "/" },
@@ -31,17 +29,15 @@ const Navbar = () => {
                 <span className="text-sm font-medium">user@portfolio:~$</span>
               </div>
             </div>
-            
+
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
+              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-primary"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-primary h-8 w-8 p-0 text-muted-foreground"
               >
                 {isOpen ? <X size={16} /> : <Menu size={16} />}
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -51,8 +47,8 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <span className="text-green-500 font-bold">➜</span>
               <span className="text-blue-400 font-medium">~</span>
-              <a 
-                href="/" 
+              <a
+                href="/"
                 className="text-primary font-bold hover:text-primary/80 transition-colors"
               >
                 ./portfolio
@@ -85,7 +81,9 @@ const Navbar = () => {
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-green-500 font-bold">➜</span>
                   <span className="text-blue-400 font-medium">menu</span>
-                  <span className="text-muted-foreground">cat navigation.txt</span>
+                  <span className="text-muted-foreground">
+                    cat navigation.txt
+                  </span>
                 </div>
                 <div className="ml-6 space-y-2">
                   {navItems.map((item) => (
@@ -95,7 +93,7 @@ const Navbar = () => {
                       className="flex items-center gap-2 px-3 py-2 text-sm bg-muted border border-border rounded hover:border-primary/50 hover:bg-primary/10 transition-all duration-200 text-muted-foreground hover:text-primary font-mono"
                       onClick={() => setIsOpen(false)}
                     >
-                      <span className="text-green-500 font-bold">{'>'}</span>
+                      <span className="text-green-500 font-bold">{">"}</span>
                       ./{item.title.toLowerCase()}
                     </a>
                   ))}

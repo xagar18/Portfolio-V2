@@ -1,46 +1,42 @@
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Route, Routes } from "react-router-dom";
-// import { Toaster } from "@/components/ui/toaster";
 import { AppSidebar } from "@/components/app-sidebar";
 import ThemeToggle from "@/components/ThemeToggle";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import Contact from "@/pages/Contact";
 import Main from "@/pages/Main";
 import NotFound from "@/pages/NotFound";
 import Projects from "@/pages/Projects";
 import Skills from "@/pages/Skills";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
-const queryClient = new QueryClient();
+const App = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      {/* <Toaster /> */}
-      <Sonner />
-      <SidebarProvider>
-        <div className="min-h-screen flex w-full">
-          <AppSidebar />
-          <main className="flex-1 min-h-screen relative transition-all duration-200">
-            <div className="fixed top-4 z-50 transition-all duration-200 peer-data-[state=collapsed]:left-4 peer-data-[state=expanded]:left-[calc(16rem+1rem)]">
-              <SidebarTrigger className="h-8 w-8" />
-            </div>
-            <div className="fixed top-4 right-4 z-50">
-              <ThemeToggle />
-            </div>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
+  return (
+    <div className="min-h-screen flex w-full">
+      <AppSidebar open={sidebarOpen} setOpen={setSidebarOpen} />
+      <main className="flex-1 min-h-screen relative transition-all duration-200">
+        <div className="fixed top-4 left-4 z-50">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="inline-flex items-center justify-center h-8 w-8 rounded-md border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Menu className="h-4 w-4" />
+          </button>
         </div>
-      </SidebarProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle />
+        </div>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+    </div>
+  );
+};
 
 export default App;
