@@ -12,7 +12,7 @@ const projects = [
     title: "DevSetup Magic",
     description:
       "A comprehensive application for setting up your development environment with ease, offering support for multiple operating systems and development tools.",
-    tech: ["React"],
+    tech: ["React", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/xagar18/Environment-Installer",
     live: "https://sagar-devsetup.netlify.app/",
     year: "2024",
@@ -21,7 +21,7 @@ const projects = [
     title: "Quote Generator",
     description:
       "An innovative tool that generates inspiring, motivational, and thought-provoking quotes. Ideal for sharing on social media or adding to your collection. Powered by the Google Gemini API Flash 1.5.",
-    tech: ["React", "TypeScript", "Gemini", "Deepseek", "Express"],
+    tech: ["React", "Tailwind CSS", "TypeScript", "Gemini", "Deepseek"],
     github: "https://github.com/xagar18/Ai-Quote-Generator",
     live: "https://sagar-quote.netlify.app/",
     year: "2024",
@@ -30,7 +30,7 @@ const projects = [
     title: "Weather Dashboard",
     description:
       "Clean weather application with location forecasts and interactive charts.",
-    tech: ["React", "Weather API", "Tailwind CSS"],
+    tech: ["React","TypeScript", "Weather API", "Tailwind CSS"],
     github: "https://github.com/xagar18/Weather-App-V2",
     live: "https://sagar-weatherapp.netlify.app",
     year: "2024",

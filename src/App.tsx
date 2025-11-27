@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex w-full">

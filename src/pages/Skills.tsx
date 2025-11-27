@@ -1,50 +1,71 @@
-
-import { Code2, Database, Globe, Wrench, Star, Zap } from "lucide-react";
+import { Code2, Database, Globe, Star, Wrench, Zap } from "lucide-react";
+import {
+  SiAwsamplify,
+  SiExpress,
+  SiGithub,
+  SiJavascript,
+  SiMongodb,
+  SiNetlify,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPostman,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 
 const frontendSkills = [
-  { name: "React", level: 95, icon: "⚛️" },
-  // { name: "Next.js", level: 90, icon: "▲" },
-  { name: "TypeScript", level: 88, icon: "📘" },
-  { name: "Tailwind CSS", level: 99, icon: "🎨" },
-  { name: "JavaScript", level: 96, icon: "💛" },
+  { name: "React", level: 95, icon: SiReact, color: "#61DAFB" },
+  { name: "JavaScript", level: 96, icon: SiJavascript, color: "#F7DF1E" },
+  { name: "TypeScript", level: 80, icon: SiTypescript, color: "#3178C6" },
+  { name: "Tailwind CSS", level: 99, icon: SiTailwindcss, color: "#06B6D4" },
 ];
 
 const backendSkills = [
-  { name: "Node.js", level: 98, icon: "🟢" },
-  { name: "Express.js", level: 97, icon: "🚀" },
-  { name: "MongoDB", level: 95, icon: "🍃" },
-  { name: "PostgreSQL", level: 88, icon: "🐘" },
-  { name: "REST APIs", level: 98, icon: "🔗" },
+  { name: "Node.js", level: 95, icon: SiNodedotjs, color: "#339933" },
+  { name: "Express.js", level: 92, icon: SiExpress, color: "#000000" },
+  { name: "MongoDB", level: 93, icon: SiMongodb, color: "#47A248" },
+  { name: "PostgreSQL", level: 90, icon: SiPostgresql, color: "#4169E1" },
+  { name: "REST APIs", level: 98, icon: TbApi, color: "#FF6C37" },
 ];
 
 const toolsSkills = [
-  { name: "Git", level: 88, icon: "📚" },
-  // { name: "Docker", level: 75, icon: "🐳" },
-  { name: "AWS", level: 70, icon: "☁️" },
-  { name: "Vercel", level: 85, icon: "🔺" },
-  // { name: "Figma", level: 80, icon: "🎨" },
+  { name: "GitHub", level: 90, icon: SiGithub, color: "#181717" },
+  { name: "AWS", level: 70, icon: SiAwsamplify, color: "#FF9900" },
+  { name: "Vercel", level: 85, icon: SiVercel, color: "#000000" },
+  { name: "Netlify", level: 90, icon: SiNetlify, color: "#00C7B7" },
+  { name: "Postman", level: 90, icon: SiPostman, color: "#FF6C37" },
 ];
 
-const SkillCard = ({ skill }: { skill: { name: string; level: number; icon: string } }) => (
-  <div className="p-2 border border-border rounded bg-card hover:bg-muted/50 transition-all duration-200">
-    <div className="flex items-center gap-2 mb-2">
-      <span className="text-sm">{skill.icon}</span>
-      <h3 className="font-medium text-xs text-foreground">{skill.name}</h3>
-    </div>
-    <div className="space-y-1">
-      <div className="flex justify-between text-xs">
-        <span className="text-muted-foreground">Level</span>
-        <span className="text-foreground font-medium">{skill.level}%</span>
+const SkillCard = ({
+  skill,
+}: {
+  skill: { name: string; level: number; icon: any; color: string };
+}) => {
+  const Icon = skill.icon;
+  return (
+    <div className="p-2 border border-border rounded bg-card hover:bg-muted/50 transition-all duration-200">
+      <div className="flex items-center gap-2 mb-2">
+        <Icon className="text-sm" style={{ color: skill.color }} />
+        <h3 className="font-medium text-xs text-foreground">{skill.name}</h3>
       </div>
-      <div className="w-full bg-muted rounded-full h-1">
-        <div
-          className="bg-primary h-1 rounded-full transition-all duration-500"
-          style={{ width: `${skill.level}%` }}
-        />
+      <div className="space-y-1">
+        <div className="flex justify-between text-xs">
+          <span className="text-muted-foreground">Level</span>
+          <span className="text-foreground font-medium">{skill.level}%</span>
+        </div>
+        <div className="w-full bg-muted rounded-full h-1">
+          <div
+            className="bg-primary h-1 rounded-full transition-all duration-500"
+            style={{ width: `${skill.level}%` }}
+          />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Skills = () => {
   return (
@@ -75,8 +96,12 @@ const Skills = () => {
                 <span className="text-xs">ls -la skills/</span>
               </div>
               <div className="ml-4 p-2 bg-muted/50 rounded border border-border/50">
-                <div className="text-sm font-bold text-primary mb-0.5">TECHNICAL SKILLS</div>
-                <div className="text-xs text-muted-foreground">Modern web development stack</div>
+                <div className="text-sm font-bold text-primary mb-0.5">
+                  TECHNICAL SKILLS
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Modern web development stack
+                </div>
               </div>
             </div>
 
@@ -89,7 +114,9 @@ const Skills = () => {
                   <span className="text-xs">cat frontend.json</span>
                 </div>
                 <div className="ml-4 p-2 bg-muted/50 rounded border border-border/50">
-                  <h3 className="text-xs font-medium text-foreground mb-2">Frontend Development</h3>
+                  <h3 className="text-xs font-medium text-foreground mb-2">
+                    Frontend Development
+                  </h3>
                   <div className="space-y-2">
                     {frontendSkills.map((skill) => (
                       <SkillCard key={skill.name} skill={skill} />
@@ -106,7 +133,9 @@ const Skills = () => {
                   <span className="text-xs">cat backend.json</span>
                 </div>
                 <div className="ml-4 p-2 bg-muted/50 rounded border border-border/50">
-                  <h3 className="text-xs font-medium text-foreground mb-2">Backend Development</h3>
+                  <h3 className="text-xs font-medium text-foreground mb-2">
+                    Backend Development
+                  </h3>
                   <div className="space-y-2">
                     {backendSkills.map((skill) => (
                       <SkillCard key={skill.name} skill={skill} />
@@ -123,7 +152,9 @@ const Skills = () => {
                   <span className="text-xs">cat tools.json</span>
                 </div>
                 <div className="ml-4 p-2 bg-muted/50 rounded border border-border/50">
-                  <h3 className="text-xs font-medium text-foreground mb-2">Tools & Technologies</h3>
+                  <h3 className="text-xs font-medium text-foreground mb-2">
+                    Tools & Technologies
+                  </h3>
                   <div className="space-y-2">
                     {toolsSkills.map((skill) => (
                       <SkillCard key={skill.name} skill={skill} />
@@ -142,7 +173,9 @@ const Skills = () => {
               </div>
               <div className="ml-4 flex items-center gap-2 p-2 bg-muted/50 rounded border border-border/50">
                 <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">ALWAYS LEARNING NEW TECHNOLOGIES</span>
+                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">
+                  ALWAYS LEARNING NEW TECHNOLOGIES
+                </span>
               </div>
             </div>
 
