@@ -6,10 +6,12 @@ import {
   SiJavascript,
   SiMongodb,
   SiNetlify,
+  SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
   SiPostman,
   SiReact,
+  SiRedux,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
@@ -18,25 +20,28 @@ import { TbApi } from "react-icons/tb";
 
 const frontendSkills = [
   { name: "React", level: 95, icon: SiReact, color: "#61DAFB" },
-  { name: "JavaScript", level: 96, icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Next.js", level: 90, icon: SiNextdotjs, color: "white" },
   { name: "TypeScript", level: 80, icon: SiTypescript, color: "#3178C6" },
   { name: "Tailwind CSS", level: 99, icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Redux Toolkit", level: 85, icon: SiRedux, color: "#764ABC" },
 ];
 
 const backendSkills = [
   { name: "Node.js", level: 95, icon: SiNodedotjs, color: "#339933" },
-  { name: "Express.js", level: 92, icon: SiExpress, color: "#000000" },
+  { name: "Express.js", level: 92, icon: SiExpress, color: "white" },
   { name: "MongoDB", level: 93, icon: SiMongodb, color: "#47A248" },
   { name: "PostgreSQL", level: 90, icon: SiPostgresql, color: "#4169E1" },
   { name: "REST APIs", level: 98, icon: TbApi, color: "#FF6C37" },
 ];
 
 const toolsSkills = [
-  { name: "GitHub", level: 90, icon: SiGithub, color: "#181717" },
+  { name: "GitHub", level: 90, icon: SiGithub, color: "white" },
   { name: "AWS", level: 70, icon: SiAwsamplify, color: "#FF9900" },
-  { name: "Vercel", level: 85, icon: SiVercel, color: "#000000" },
+  { name: "Vercel", level: 85, icon: SiVercel, color: "white" },
   { name: "Netlify", level: 90, icon: SiNetlify, color: "#00C7B7" },
   { name: "Postman", level: 90, icon: SiPostman, color: "#FF6C37" },
+
+
 ];
 
 const SkillCard = ({

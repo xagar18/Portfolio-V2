@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div className="min-h-screen flex w-full">
       <AppSidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-      <main className="flex-1 min-h-screen relative transition-all duration-200">
+      <main className="flex-1 min-h-screen relative transition-all duration-200 bg-background">
         <div className="fixed top-4 left-4 z-50">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}

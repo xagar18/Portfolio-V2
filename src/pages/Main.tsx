@@ -42,7 +42,7 @@ const Main = () => {
           setTimeout(() => {
             setCurrentLine((prev) => prev + 1);
             setTypingText("");
-          }, 1000);
+          }, 10);
         }
       }, 5);
 
@@ -75,7 +75,7 @@ const Main = () => {
               <div className="flex items-center gap-3">
                 <span className="text-primary">➜</span>
                 <span className="text-sm">
-                  Welcome to sagarweb.site terminal
+                  Welcome to sagar terminal
                 </span>
               </div>
             )}
@@ -124,8 +124,9 @@ const Main = () => {
                   </div>
                   <div className="ml-6 p-4 bg-muted/50 rounded-md border border-border/50">
                     <p className="text-sm leading-relaxed">
-                      Passionate developer crafting seamless digital experiences
-                      with clean code and elegant design.
+                      Full-stack developer specializing in building modern web applications.
+                      I transform complex problems into intuitive, performant solutions
+                      using React, TypeScript, and Node.js. Always learning, always shipping.
                     </p>
                   </div>
                 </div>
